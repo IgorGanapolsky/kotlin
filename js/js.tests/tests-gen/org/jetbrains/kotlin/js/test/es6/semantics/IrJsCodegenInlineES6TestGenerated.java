@@ -2342,6 +2342,11 @@ public class IrJsCodegenInlineES6TestGenerated extends AbstractIrJsCodegenInline
             runTest("compiler/testData/codegen/boxInline/nonLocalReturns/kt8948v2.kt");
         }
 
+        @TestMetadata("kt9304.kt")
+        public void testKt9304() throws Exception {
+            runTest("compiler/testData/codegen/boxInline/nonLocalReturns/kt9304.kt");
+        }
+
         @TestMetadata("nestedNonLocals.kt")
         public void testNestedNonLocals() throws Exception {
             runTest("compiler/testData/codegen/boxInline/nonLocalReturns/nestedNonLocals.kt");
