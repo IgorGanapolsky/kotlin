@@ -297,6 +297,11 @@ object FirErrors {
     val CANNOT_INFER_PARAMETER_TYPE by error0<KtParameter>()
 
     // Fun interfaces
+    val FUN_INTERFACE_WRONG_COUNT_OF_ABSTRACT_MEMBERS by error0<KtClass>(SourceElementPositioningStrategies.FUN_MODIFIER)
+    val FUN_INTERFACE_CANNOT_HAVE_ABSTRACT_PROPERTIES by error0<KtDeclaration>(SourceElementPositioningStrategies.FUN_INTERFACE_ABSTRACT_PROPERTY)
+    val FUN_INTERFACE_ABSTRACT_METHOD_WITH_TYPE_PARAMETERS by error0<PsiElement>()
+    val FUN_INTERFACE_ABSTRACT_METHOD_WITH_DEFAULT_VALUE by error0<PsiElement>()
+    val FUN_INTERFACE_WITH_SUSPEND_FUNCTION by error0<KtFunction>(SourceElementPositioningStrategies.SUSPEND_MODIFIER)
     val FUN_INTERFACE_CONSTRUCTOR_REFERENCE by error0<KtExpression>(SourceElementPositioningStrategies.REFERENCE_BY_QUALIFIED)
 
     // Properties & accessors

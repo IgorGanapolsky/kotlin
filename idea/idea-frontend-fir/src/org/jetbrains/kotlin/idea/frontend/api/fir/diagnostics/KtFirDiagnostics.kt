@@ -953,6 +953,26 @@ sealed class KtFirDiagnostic<PSI: PsiElement> : KtDiagnosticWithPsi<PSI> {
         override val diagnosticClass get() = CannotInferParameterType::class
     }
 
+    abstract class FunInterfaceWrongCountOfAbstractMembers : KtFirDiagnostic<KtClass>() {
+        override val diagnosticClass get() = FunInterfaceWrongCountOfAbstractMembers::class
+    }
+
+    abstract class FunInterfaceCannotHaveAbstractProperties : KtFirDiagnostic<KtDeclaration>() {
+        override val diagnosticClass get() = FunInterfaceCannotHaveAbstractProperties::class
+    }
+
+    abstract class FunInterfaceAbstractMethodWithTypeParameters : KtFirDiagnostic<PsiElement>() {
+        override val diagnosticClass get() = FunInterfaceAbstractMethodWithTypeParameters::class
+    }
+
+    abstract class FunInterfaceAbstractMethodWithDefaultValue : KtFirDiagnostic<PsiElement>() {
+        override val diagnosticClass get() = FunInterfaceAbstractMethodWithDefaultValue::class
+    }
+
+    abstract class FunInterfaceWithSuspendFunction : KtFirDiagnostic<KtFunction>() {
+        override val diagnosticClass get() = FunInterfaceWithSuspendFunction::class
+    }
+
     abstract class FunInterfaceConstructorReference : KtFirDiagnostic<KtExpression>() {
         override val diagnosticClass get() = FunInterfaceConstructorReference::class
     }
