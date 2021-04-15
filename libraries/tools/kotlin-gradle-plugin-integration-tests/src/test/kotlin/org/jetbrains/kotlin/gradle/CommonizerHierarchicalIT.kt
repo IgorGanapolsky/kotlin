@@ -86,6 +86,25 @@ class CommonizerHierarchicalIT : BaseGradleIT() {
         }
     }
 
+    @Test
+    fun `test commonizeHierarchicallyMultiModule`() {
+        with(Project("commonizeHierarchicallyMultiModule")) {
+            build("assemble") {
+                assertSuccessful()
+                assertTasksExecuted(":p1:commonizeCInterop")
+                assertTasksExecuted(":p2:commonizeCInterop")
+                assertTasksExecuted(":p3:commonizeCInterop")
+
+                /*
+                Commonized C-Interops are not published or forwarded to other Gradle projects.
+                The missing dependency will be ignored by the metadata compiler.
+                We still expect a warning being printed.
+                 */
+                assertContains("w: Could not find \"commonizeHierarchicallyMultiModule:p1-cinterop-withPosix\" in ")
+            }
+        }
+    }
+
     private object Os {
         private val os = OperatingSystem.current()
         val canCompileApple get() = os.isMacOsX
