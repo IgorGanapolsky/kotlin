@@ -247,7 +247,8 @@ abstract class BaseGradleIT {
         val configurationCache: Boolean = false,
         val configurationCacheProblems: ConfigurationCacheProblems = ConfigurationCacheProblems.FAIL,
         val warningMode: WarningMode = WarningMode.Fail,
-        val useFir: Boolean = false
+        val useFir: Boolean = false,
+        val additionalPath: List<File> = emptyList()
     )
 
     enum class ConfigurationCacheProblems {
@@ -958,6 +959,12 @@ Finished executing task ':$taskName'|
 
             options.gradleUserHome?.let {
                 put("GRADLE_USER_HOME", it.canonicalPath)
+            }
+
+            if (options.additionalPath.isNotEmpty()) {
+                val oldPath = System.getenv("PATH")
+                val newPathElements = options.additionalPath.joinToString(separator = File.pathSeparator) { it.absolutePath }
+                put("PATH", newPathElements + File.pathSeparator + oldPath)
             }
         }
 
